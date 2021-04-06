@@ -42,7 +42,7 @@ print(tf.__version__)
 >>```python
 >>def my_text_vectorization(label,Data, sentences,type)
 >>```
->>This fuction can convert English text into a number vector to fit the input of the model. *label* is the ground true label. *Data* is the dataset we used. *type* means the different text vectorization method. If type = 0, we use Bag of Word. Otherwise, we use Word2vec.
+>>This fuction can convert English text into a number vector to fit the input of the model. *label* is the ground true label. *Data* is the dataset we used. *sentences* is also our data but separated paragraphs into sentences. *type* means the different text vectorization method. If type = 0, we use Bag of Word. Otherwise, we use Word2vec.
 * **RF.py** contains defined modeling function which can be called in **main.py**. 
 >>Specifically, it includes hyper-parameter selection by using GridSearchCV `RF_ParameterTuning()`, model construction `RF_modeling()`, accuracy report `acc()`, and learning curve plotting `plot_learning_curve()`
 * **LSTM.py** contains a lot of defined modeling function which can be called in **main.py**. 
