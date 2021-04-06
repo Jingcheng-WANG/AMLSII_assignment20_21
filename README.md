@@ -32,37 +32,23 @@ print(tf.__version__)
 * **main.py** can be excuted to run the whole project.
 * **Datasets folder**: Please use your own dataset.
 * The file folder A, B contain code fles for each task. Basically, they cannot run separately but need to rely on the support of main.py
->>In this file, we shall only look at and call
->>```python
->>def pre_processing(num, label, root_path, point, split = True)
->>```
-* **CV2_load_data.py** is done independently by us for importing image pixel matrix sets and labels.
->>In this file, we shall only look at and call
->>```python
->>def pre_processing(num, label, root_path, split = True)
->>```
->>*num* is the number of images to be imported, *label* is the index of the labels, *root_path* is the location path of the filea called, *split* determines whether split the dataset into training set and validation set. The imported pixels will be compressed to 50*50. If you are not satisfied with this compression,
->>```python
->>def load_cv2_data(num, root_path):
->>     img_path = 'img/'
->>     X = np.zeros((num,50,50,3))
->>     for file in range(num):
->>         image = cv2.imread(root_path + img_path + '{}'.format(file) +'.png', 1)
->>         X = cv2.resize(image,(50,50))
->>    return X
->>```
->>you can modify line 3 and line 6
 ### Folder A
-* **RF.py** contains a lot of defined function which can be called in **main.py**. 
+* **data_preprocessing.py** contains defined function to preprocess our data. 
+>>In this file, we shall only look at and call
+>>```python
+>>def my_data_preprocessing(Data,type)
+>>```
+>>This function is to clean up some useless data and unify the format of all data. *Data* is the dataset we used, *type* means the different text vectorization method. If type = 0, we use Bag of Word. Otherwise, we use Word2vec.
+>>```python
+>>def my_text_vectorization(label,Data, sentences,type)
+>>```
+>>This fuction can convert English text into a number vector to fit the input of the model. *label* is the ground true label. *Data* is the dataset we used. *type* means the different text vectorization method. If type = 0, we use Bag of Word. Otherwise, we use Word2vec.
+* **RF.py** contains defined modeling function which can be called in **main.py**. 
 >>Specifically, it includes hyper-parameter selection by using GridSearchCV `RF_ParameterTuning()`, model construction `RF_modeling()`, accuracy report `acc()`, and learning curve plotting `plot_learning_curve()`
-### Folder B
-* **B1 B1_CNN.py** is the most accurate model and will be called in **main.py**. 
->>Specifically, it includes model construction `B1_CNN()`, accuracy report `B1_acc()`, confusion matrix plotting `plot_confusion_matrix()`, loss curve plotting `plot_loss_curve()`, accuracy curve plotting `plot_accuracy_curve()`.
-* **B1_MLP.py** is not called in **main.py** and can be executed separately. 
->>Specifically, it includes On hot coding transformation `On_Hot_Coding()`, model construction `allocate_weights_and_biases()+multilayer_perceptron()`, hyper-parameter setting, accuracy report<br>
->>To ensure that it can be run separately, please `import Dlib_load_data` in the correct path and copy **shape_predictor_68_face_landmarks.dat**
-* **B1_RF.py** is not called in **main.py** and cannot be executed separately.
->>Specifically, it includes hyper-parameter selection by using GridSearchCV `B1_RF_ParameterTuning()`, model construction `B1_RF()`, accuracy report `B1_acc()`, and learning curve plotting `plot_learning_curve()`
+* **LSTM.py** contains a lot of defined modeling function which can be called in **main.py**. 
+>>Specifically, it includes `Input_convert` which converts all thing in order to fit the input shape of our model, model construction `LSTM_modeling()`, confusion matrix plotting `plot_confusion_matrix()`, loss curve plotting `plot_loss_curve()`, accuracy curve plotting `plot_accuracy_curve()`.
+### Folder B 
+>>It is almost the same as what is included in folder A. and the only difference is that label has changed from 3 to 2.
 
 ## Usage
 Make sure your own datasets are in the same directory with **main.py** and have the following structure (subfiles)<br>
