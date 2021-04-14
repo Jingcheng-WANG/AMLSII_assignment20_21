@@ -30,8 +30,8 @@ print(tf.__version__)
 ## File Description
 ### Base Directory
 * **main.py** can be excuted to run the whole project.
-* **Datasets folder**: Please use your own dataset.
-* The file folder A, B contain code fles for each task. Basically, they cannot run separately but need to rely on the support of main.py. You should download the Twitter dataset from [SemEval2017-Task 4](https://alt.qcri.org/semeval2017/task4/index.php?id=data-and-tools). The names of the compressed packages you need to download are 4a-english.zip and 4b-english.zip. Finally, make sure that your Datasets file contains SemEval2017-task4-dev.subtask-A.english.INPUT.txt and SemEval2017-task4-dev.subtask-BD.english.INPUT.txt
+* **Datasets folder**: Please use your own dataset.  You should download the Twitter dataset from [SemEval2017-Task 4](https://alt.qcri.org/semeval2017/task4/index.php?id=data-and-tools). The names of the compressed packages you need to download are 4a-english.zip and 4b-english.zip. Finally, make sure that your Datasets file contains SemEval2017-task4-dev.subtask-A.english.INPUT.txt and SemEval2017-task4-dev.subtask-BD.english.INPUT.txt
+* The file folder A, B contain code fles for each task. Basically, they cannot run separately but need to rely on the support of main.py.
 ### Folder A
 * **data_preprocessing.py** contains defined function to preprocess our data. 
 >>In this file, we shall only look at and call
